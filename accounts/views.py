@@ -6,6 +6,7 @@ from .permissions import IsAdminOrTL, IsAdmin
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 
+
 class CreateUserView(generics.CreateAPIView):
     serializer_class = UserCreateSerializer
     permission_classes = [permissions.IsAuthenticated, IsAdmin]
@@ -38,3 +39,5 @@ class TeamMembersView(generics.ListAPIView):
     def get_queryset(self):
         team_id = self.kwargs.get('team_id')
         return TeamMembership.objects.filter(team_id=team_id)
+     
+
